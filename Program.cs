@@ -1,3 +1,5 @@
+using AlCollection.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
@@ -9,8 +11,9 @@ var logger = new LoggerConfiguration()
     .CreateLogger();
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
 
-builder.Services.AddControllers();
 builder.Services.AddCors(opt => 
     opt.AddPolicy("AllowAll", builder => 
         builder.AllowAnyOrigin()
@@ -21,6 +24,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Alcohol Collection", Version = "v1"}));
 
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
