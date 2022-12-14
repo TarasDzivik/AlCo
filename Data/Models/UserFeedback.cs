@@ -6,7 +6,7 @@
     public class UserFeedback
     {
         /// <summary>
-        /// The reference to a Custmer.
+        /// The reference to the User.
         /// </summary>
         //TODO: To figure out if you need to get the user id here or just User is enough
         public User User { get; set; }

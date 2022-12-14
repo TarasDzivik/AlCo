@@ -11,7 +11,7 @@ namespace AlCollection.Data.ModelsConfigurations
     {
         public void Configure(EntityTypeBuilder<Drink> builder)
         {
-            #region Property
+            #region Properties
             builder.HasKey(b => b.Id);
             builder.Property(b => b.Id)
                 .ValueGeneratedOnAdd();
@@ -23,13 +23,15 @@ namespace AlCollection.Data.ModelsConfigurations
                 .IsRequired();
 
             builder.Property(d => d.ABV)
-                .HasColumnType("Double")
+                .HasColumnType("FLOAT")
+                .HasPrecision(2, 2)
                 .HasColumnName("Percent of alcohol")
                 .HasMaxLength(4);
 
-            builder.Property(d => d.Raiting)
+            builder.Property(d => d.Rating)
                 .HasColumnType("Double")
-                .HasColumnName("Raiting");
+                .HasPrecision(1, 1)
+                .HasColumnName("Rating");
             #endregion
             #region References
             builder.HasOne(d => d.BrandName)

@@ -5,6 +5,7 @@
     /// </summary>
     public class Brand
     {
+
         /// <summary>
         /// The Id of the Brand
         /// </summary>
@@ -13,6 +14,8 @@
         /// The Name of the company that produces an Drink (example: "Thomas Sheridan & Sons", "Jack Daniel's ")
         /// </summary>
         public string? BrandName { get; set; }
+
+        #region References
         /// <summary>
         /// The List of productions that the Brand produced.
         /// </summary>
@@ -21,5 +24,6 @@
         /// The key to a country where the brand started its business.
         /// </summary>
         public Country BrandCountry { get; set; }
+        #endregion
     }
 }

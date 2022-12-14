@@ -5,6 +5,7 @@
     /// </summary>
     public class Country
     {
+        #region Properties
         /// <summary>
         /// The id of the country name based on Alpha 2 code (only 2 digit)
         /// </summary>
@@ -13,6 +14,9 @@
         /// The full country name.
         /// </summary>
         public string LongName { get; set; }
+        #endregion
+
+        #region References
         /// <summary>
         /// A reference to the of references to the brands' products in that country.
         /// </summary>
@@ -21,6 +25,10 @@
         /// A reference to the list of drinks created in the current contries.
         /// </summary>
         public List<Drink> Drinks { get; set; }
-
+        /// <summary>
+        /// A list of users belonging to the current country.
+        /// </summary>
+        public List<User> Users { get; set; }
+        #endregion
     }
 }

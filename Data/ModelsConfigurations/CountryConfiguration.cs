@@ -11,10 +11,10 @@ namespace AlCollection.Data.ModelsConfigurations
     {
         public void Configure(EntityTypeBuilder<Country> builder)
         {
+            #region Properties
             builder.HasKey(c => c.Id);
-
             builder.Property(c => c.Id)
-                .HasColumnType("text")
+                .HasColumnType("nvarchar")
                 .HasColumnName("Short Name")
                 .HasMaxLength(56)
                 .IsRequired();
@@ -24,7 +24,9 @@ namespace AlCollection.Data.ModelsConfigurations
                 .HasColumnName("Country Name")
                 .HasMaxLength(56)
                 .IsRequired();
+            #endregion
 
+            #region References
             builder.HasMany(c => c.Brands)
                 .WithOne(b => b.BrandCountry)
                 .HasForeignKey(c => c.Id);
@@ -33,6 +35,11 @@ namespace AlCollection.Data.ModelsConfigurations
                 .WithOne(d => d.Country)
                 .HasForeignKey(c => c.Id)
                 .IsRequired();
+
+            builder.HasMany(c => c.Users)
+                .WithOne(u => u.Citizenship)
+                .HasForeignKey(c => c.Id);
+            #endregion
         }
     }
 }

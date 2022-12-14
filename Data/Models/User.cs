@@ -19,27 +19,31 @@
         /// </summary>
         public string Nickname { get; set; }
         /// <summary>
-        /// The first Name is optional because of privacy of the User.
-        /// </summary>
-        public string? FirstName { get; set; }
-        /// <summary>
-        /// The Second Name is optional because of privacy of the User.
-        /// </summary>
-        public string? SecondName { get; set; }
-        /// <summary>
         /// The User's Date Of Birthday (required for statistics).
         /// </summary>
         public DateOnly DateOfBirthday { get; set; }
         /// <summary>
-        /// The User's gender (ex: 1 - Male, 2 - Female, 3 - Other)
+        /// The User's gender should be only 3 types (ex: 1 - Male, 2 - Female, null - Other).
         /// </summary>
+        public string? Gender { get; set; }
+        /// <summary>
+        /// The first Name is optional because of privacy of the User.
+        /// </summary>
+        public string? FirstName { get; set; }
+        /// <summary>
+        /// The second Name is optional because of privacy of the User.
+        /// </summary>
+        public string? SecondName { get; set; }
         #endregion
         #region References
-        public int Gender { get; set; }
         /// <summary>
-        /// The Citizenship is a kay for a User's country.
+        /// The reference to the citizenship of the User.
         /// </summary>
         public Country Citizenship { get; set; }
+        /// <summary>
+        /// The reference to the collection of drinks that the user tasted.
+        /// </summary>
+        public UserCollection Collection { get; set; }
         #endregion
     }
 }

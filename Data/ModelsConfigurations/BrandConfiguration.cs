@@ -11,16 +11,18 @@ namespace AlCollection.Data.ModelsConfigurations
     {
         public void Configure(EntityTypeBuilder<Brand> builder)
         {
+            #region Properties
             builder.HasKey(b => b.Id);
             builder.Property(b => b.Id)
                 .ValueGeneratedOnAdd();
 
             builder.Property(b => b.BrandName)
-                .HasColumnType("text")
+                .HasColumnType("nvarchar")
                 .HasColumnName("Brand name")
-                .HasMaxLength(80)
-                .IsUnicode(true);
+                .HasMaxLength(80);
+            #endregion
 
+            #region References
             builder.HasMany(d => d.Drinks)
                 .WithOne(b => b.BrandName)
                 .HasForeignKey(d => d.DrinkName);
@@ -28,6 +30,7 @@ namespace AlCollection.Data.ModelsConfigurations
             builder.HasOne(b => b.BrandCountry)
                 .WithMany(c => c.Brands)
                 .HasForeignKey(b => b.Id);
+            #endregion
         }
     }
 }

@@ -22,7 +22,8 @@
         /// <summary>
         /// Users ratings are Raiting measures of customer satisfaction.
         /// </summary>
-        public double? Raiting { get; set; }
+        //TODO: to make autoscraper and calculating Rating from User perconal raitings
+        public double? Rating { get; set; }
         /// <summary>
         /// The key to the company that prodused that alcohol
         /// </summary>
